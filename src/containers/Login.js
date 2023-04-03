@@ -37,7 +37,6 @@ export default class Login {
 
   }
 
-  // Erreur de frappe, "employé"/"admin"
   // handleSubmitAdmin = e => {
   //   e.preventDefault()
   //   const user = {
@@ -59,6 +58,7 @@ export default class Login {
   //     })
   // }
 
+  // [BUG REPORT - Login] remplacement de "employee" par "admin
   handleSubmitAdmin = e => {
     e.preventDefault()
     const user = {

@@ -24,7 +24,7 @@ const row = (bill) => {
 //   return (data && data.length) ? data.map(bill => row(bill)).join("") : ""
 // }
 
-
+//[BUG REPORT - Bills] Trier les NDF par date
 //Trier les notes de frais par date
 const rows = (data) => {
   return (data && data.length) ? data.sort((a, b) => new Date(b.date) - new Date(a.date)).map(bill => row(bill)).join("") : "" 

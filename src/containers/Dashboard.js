@@ -130,6 +130,7 @@ export default class {
     this.onNavigate(ROUTES_PATH['Dashboard'])
   }
 
+  // la fonction handleShowTickets est ICI
   handleShowTickets(e, bills, index) {
     if (this.counter === undefined || this.index !== index) this.counter = 0
     if (this.index === undefined || this.index !== index) this.index = index
@@ -145,8 +146,10 @@ export default class {
       this.counter ++
     }
 
+
+    // [BUG HUNT - Dashboard] ajout de "off" pour réinitialiser les événements
     bills.forEach(bill => {
-      $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
+      $(`#open-bill${bill.id}`).off('click').click((e) => this.handleEditTicket(e, bill, bills))
     })
 
     return bills

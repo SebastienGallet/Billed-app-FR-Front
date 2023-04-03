@@ -26,8 +26,7 @@ export default class NewBill {
     formData.append('file', file)
     formData.append('email', email)
 
-
-    // Vérification du format de l'extension du fichier
+    // [BIG HUNT - Bills] Vérification du format de l'extension du fichier
     const buttonSubmit = document.querySelector('button[type="submit"]')
     const helpFormat = document.querySelector(`.help-block`)
     if (extension === 'jpg' || extension === 'jpeg' || extension === 'png') {
