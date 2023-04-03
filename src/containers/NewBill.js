@@ -20,26 +20,43 @@ export default class NewBill {
     const file = this.document.querySelector(`input[data-testid="file"]`).files[0]
     const filePath = e.target.value.split(/\\/g)
     const fileName = filePath[filePath.length-1]
+    const extension = fileName.split('.').pop()
     const formData = new FormData()
     const email = JSON.parse(localStorage.getItem("user")).email
     formData.append('file', file)
     formData.append('email', email)
 
-    this.store
-      .bills()
-      .create({
-        data: formData,
-        headers: {
-          noContentType: true
-        }
-      })
-      .then(({fileUrl, key}) => {
-        console.log(fileUrl)
-        this.billId = key
-        this.fileUrl = fileUrl
-        this.fileName = fileName
-      }).catch(error => console.error(error))
+
+    // Vérification du format de l'extension du fichier
+    const buttonSubmit = document.querySelector('button[type="submit"]')
+    const helpFormat = document.querySelector(`.help-block`)
+    if (extension === 'jpg' || extension === 'jpeg' || extension === 'png') {
+      this.store
+        .bills()
+        .create({
+          data: formData,
+          headers: {
+            noContentType: true
+          }
+        })
+        .then(({fileUrl, key}) => {
+          console.log(fileUrl)
+          this.billId = key
+          this.fileUrl = fileUrl
+          this.fileName = fileName
+          buttonSubmit.disabled = false
+          buttonSubmit.style.opacity = 1
+          helpFormat.style.display = 'none'
+        }).catch(error => console.error(error))
+    } else {
+      buttonSubmit.disabled = true
+      buttonSubmit.style.opacity = 0.5
+      buttonSubmit.style.cursor = 'not-allowed'
+      helpFormat.style.display = 'block'
+      helpFormat.style.color = 'red'
+    }
   }
+  
   handleSubmit = e => {
     e.preventDefault()
     console.log('e.target.querySelector(`input[data-testid="datepicker"]`).value', e.target.querySelector(`input[data-testid="datepicker"]`).value)

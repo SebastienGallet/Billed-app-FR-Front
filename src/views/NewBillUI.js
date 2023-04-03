@@ -56,6 +56,7 @@ export default () => {
                   <div class="col-half">
                     <label for="file" class="bold-label">Justificatif</label>
                     <input required type="file" class="form-control blue-border" data-testid="file" />
+                    <p class="help-block" style="display: none;">Formats acceptés : .jpg, .jpeg, .png</p>
                   </div>
                 </div>
             </div>
