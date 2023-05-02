@@ -101,7 +101,7 @@ describe("Given I am connected as an employee", () => {
 		const errorMsg = screen.getByTestId("errorMsg");
 
 		expect(errorMsg.textContent).toEqual(
-			expect.stringContaining("Votre justificatif doit être une image de format (.jpg) ou (.jpeg) ou (.png)")
+			expect.stringContaining("Formats acceptés : .jpg, .jpeg, .png")
 		);
 
 		//* format valid
