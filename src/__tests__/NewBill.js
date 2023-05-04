@@ -93,7 +93,7 @@ describe("Given I am connected as an employee", () => {
 			target: { files: [new File(["file.pdf"], "file.pdf", { type: "image/pdf" })] },
 		});
 
-		//* Bug Hunt 3
+		// [BUG HUNT] - Bills
 		expect(handleChangeFile).toHaveBeenCalled();
 		expect(attachedFile.files[0].name).toBe("file.pdf");
 
