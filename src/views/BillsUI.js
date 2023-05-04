@@ -19,10 +19,6 @@ const row = (bill) => {
     `)
   }
 
-// Itérer chaque note de frais pour les afficher
-// const rows = (data) => {
-//   return (data && data.length) ? data.map(bill => row(bill)).join("") : ""
-// }
 
 //[BUG REPORT - Bills] Trier les NDF par date
 //Trier les notes de frais par date
